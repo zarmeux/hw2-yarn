@@ -1,0 +1,122 @@
+FSCK started by hadoop (auth:SIMPLE) from /10.34.0.10 for path / at Sun Oct 11 16:32:15 UTC 2026
+
+/ <dir>
+/hw1-check <dir>
+/hw1-check/check-20261011T160449Z-18950.txt 53 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741825_1001 len=53 Live_repl=3
+
+/hw1-check/check-20261011T160737Z-29479.txt 53 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741826_1002 len=53 Live_repl=3
+
+/mr-history <dir>
+/mr-history/done <dir>
+/mr-history/done/2026 <dir>
+/mr-history/done/2026/10 <dir>
+/mr-history/done/2026/10/11 <dir>
+/mr-history/done/2026/10/11/000000 <dir>
+/mr-history/done/2026/10/11/000000/job_1791736103627_0001-1791736130379-yarn-word+count-1791736153992-1-1-SUCCEEDED-root.default-1791736139858.jhist 22765 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741837_1013 len=22765 Live_repl=3
+
+/mr-history/done/2026/10/11/000000/job_1791736103627_0001_conf.xml 307475 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741838_1014 len=307475 Live_repl=3
+
+/mr-history/done/2026/10/11/000000/job_1791736103627_0002-1791736298681-yarn-word+count-1791736318407-1-1-SUCCEEDED-root.default-1791736305403.jhist 22755 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741850_1026 len=22755 Live_repl=3
+
+/mr-history/done/2026/10/11/000000/job_1791736103627_0002_conf.xml 307473 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741851_1027 len=307473 Live_repl=3
+
+/mr-history/tmp <dir>
+/mr-history/tmp/yarn <dir>
+/user <dir>
+/user/yarn <dir>
+/user/yarn/hw2-check-20261011T162509Z-31233 <dir>
+/user/yarn/hw2-check-20261011T162509Z-31233/input <dir>
+/user/yarn/hw2-check-20261011T162626Z-28888 <dir>
+/user/yarn/hw2-check-20261011T162626Z-28888/input <dir>
+/user/yarn/hw2-check-20261011T162626Z-28888/input/words.txt 32 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741827_1003 len=32 Live_repl=3
+
+/user/yarn/hw2-check-20261011T162836Z-16646 <dir>
+/user/yarn/hw2-check-20261011T162836Z-16646/input <dir>
+/user/yarn/hw2-check-20261011T162836Z-16646/input/words.txt 32 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741828_1004 len=32 Live_repl=3
+
+/user/yarn/hw2-check-20261011T162836Z-16646/output <dir>
+/user/yarn/hw2-check-20261011T162836Z-16646/output/_SUCCESS 0 bytes, replicated: replication=3, 0 block(s):  OK
+
+/user/yarn/hw2-check-20261011T162836Z-16646/output/part-r-00000 26 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741835_1011 len=26 Live_repl=3
+
+/user/yarn/hw2-check-20261011T163126Z-8104 <dir>
+/user/yarn/hw2-check-20261011T163126Z-8104/input <dir>
+/user/yarn/hw2-check-20261011T163126Z-8104/input/words.txt 32 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741841_1017 len=32 Live_repl=3
+
+/user/yarn/hw2-check-20261011T163126Z-8104/output <dir>
+/user/yarn/hw2-check-20261011T163126Z-8104/output/_SUCCESS 0 bytes, replicated: replication=3, 0 block(s):  OK
+
+/user/yarn/hw2-check-20261011T163126Z-8104/output/part-r-00000 26 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741848_1024 len=26 Live_repl=3
+
+/user/yarn/staging <dir>
+/user/yarn/staging/yarn <dir>
+/user/yarn/staging/yarn/.staging <dir>
+/yarn-logs <dir>
+/yarn-logs/yarn <dir>
+/yarn-logs/yarn/bucket-logs-tfile <dir>
+/yarn-logs/yarn/bucket-logs-tfile/0001 <dir>
+/yarn-logs/yarn/bucket-logs-tfile/0001/application_1791736103627_0001 <dir>
+/yarn-logs/yarn/bucket-logs-tfile/0001/application_1791736103627_0001/team-34-01_45454 69245 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741839_1015 len=69245 Live_repl=3
+
+/yarn-logs/yarn/bucket-logs-tfile/0001/application_1791736103627_0001/team-34-nn_45454 69094 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741840_1016 len=69094 Live_repl=3
+
+/yarn-logs/yarn/bucket-logs-tfile/0002 <dir>
+/yarn-logs/yarn/bucket-logs-tfile/0002/application_1791736103627_0002 <dir>
+/yarn-logs/yarn/bucket-logs-tfile/0002/application_1791736103627_0002/team-34-01_45454 33563 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741852_1028 len=33563 Live_repl=3
+
+/yarn-logs/yarn/bucket-logs-tfile/0002/application_1791736103627_0002/team-34-nn_45454 104194 bytes, replicated: replication=3, 1 block(s):  OK
+0. BP-379092889-127.0.1.1-1791734418756:blk_1073741853_1029 len=104194 Live_repl=3
+
+
+Status: HEALTHY
+ Number of data-nodes:	3
+ Number of racks:		1
+ Total dirs:			32
+ Total symlinks:		0
+
+Replicated Blocks:
+ Total size:	936818 B
+ Total files:	17
+ Total blocks (validated):	15 (avg. block size 62454 B)
+ Minimally replicated blocks:	15 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	0 (0.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	3
+ Average block replication:	3.0
+ Missing blocks:		0
+ Corrupt blocks:		0
+ Missing replicas:		0 (0.0 %)
+ Blocks queued for replication:	0
+
+Erasure Coded Block Groups:
+ Total size:	0 B
+ Total files:	0
+ Total block groups (validated):	0
+ Minimally erasure-coded block groups:	0
+ Over-erasure-coded block groups:	0
+ Under-erasure-coded block groups:	0
+ Unsatisfactory placement block groups:	0
+ Average block group size:	0.0
+ Missing block groups:		0
+ Corrupt block groups:		0
+ Missing internal blocks:	0
+ Blocks queued for replication:	0
+FSCK ended at Sun Oct 11 16:32:15 UTC 2026 in 7 milliseconds
+
+
+The filesystem under path '/' is HEALTHY

@@ -1,0 +1,223 @@
+active
+active
+10.34.0.11 active
+10.34.0.12 active
+10.34.0.13 active
+2026-10-11 16:31:25,636 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+Total Nodes:3
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+team-34-00:45454	        RUNNING	  team-34-00:8042	                           0
+team-34-01:45454	        RUNNING	  team-34-01:8042	                           0
+team-34-nn:45454	        RUNNING	  team-34-nn:8042	                           0
+2026-10-11 16:31:37,003 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+2026-10-11 16:31:37,536 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/yarn/staging/yarn/.staging/job_1791736103627_0002
+2026-10-11 16:31:37,961 INFO input.FileInputFormat: Total input files to process : 1
+2026-10-11 16:31:38,064 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-11 16:31:38,375 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1791736103627_0002
+2026-10-11 16:31:38,375 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-11 16:31:38,652 INFO conf.Configuration: resource-types.xml not found
+2026-10-11 16:31:38,652 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-10-11 16:31:38,723 INFO impl.YarnClientImpl: Submitted application application_1791736103627_0002
+2026-10-11 16:31:38,755 INFO mapreduce.Job: The url to track the job: http://team-34-en:8088/proxy/application_1791736103627_0002/
+2026-10-11 16:31:38,755 INFO mapreduce.Job: Running job: job_1791736103627_0002
+2026-10-11 16:31:46,952 INFO mapreduce.Job: Job job_1791736103627_0002 running in uber mode : false
+2026-10-11 16:31:46,953 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-11 16:31:53,009 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-11 16:32:00,054 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-11 16:32:00,063 INFO mapreduce.Job: Job job_1791736103627_0002 completed successfully
+2026-10-11 16:32:00,175 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=44
+		FILE: Number of bytes written=621655
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=177
+		HDFS: Number of bytes written=26
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=7724
+		Total time spent by all reduces in occupied slots (ms)=7550
+		Total time spent by all map tasks (ms)=3862
+		Total time spent by all reduce tasks (ms)=3775
+		Total vcore-milliseconds taken by all map tasks=3862
+		Total vcore-milliseconds taken by all reduce tasks=3775
+		Total megabyte-milliseconds taken by all map tasks=1977344
+		Total megabyte-milliseconds taken by all reduce tasks=1932800
+	Map-Reduce Framework
+		Map input records=2
+		Map output records=5
+		Map output bytes=52
+		Map output materialized bytes=44
+		Input split bytes=145
+		Combine input records=5
+		Combine output records=3
+		Reduce input groups=3
+		Reduce shuffle bytes=44
+		Reduce input records=3
+		Reduce output records=3
+		Spilled Records=6
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=98
+		CPU time spent (ms)=1520
+		Physical memory (bytes) snapshot=520949760
+		Virtual memory (bytes) snapshot=4497145856
+		Total committed heap usage (bytes)=364904448
+		Peak Map Physical memory (bytes)=324829184
+		Peak Map Virtual memory (bytes)=2245025792
+		Peak Reduce Physical memory (bytes)=196120576
+		Peak Reduce Virtual memory (bytes)=2252120064
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=32
+	File Output Format Counters 
+		Bytes Written=26
+2026-10-11 16:32:02,013 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+2026-10-11 16:32:02,573 INFO conf.Configuration: resource-types.xml not found
+2026-10-11 16:32:02,574 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+Application Report : 
+	Application-Id : application_1791736103627_0002
+	Application-Name : word count
+	Application-Type : MAPREDUCE
+	User : yarn
+	Queue : root.default
+	Application Priority : 0
+	Start-Time : 1791736298682
+	Finish-Time : 1791736318713
+	Progress : 100%
+	State : FINISHED
+	Final-State : SUCCEEDED
+	Tracking-URL : http://team-34-en:19888/jobhistory/job/job_1791736103627_0002
+	RPC Port : 44481
+	AM Host : team-34-nn
+	Aggregate Resource Allocation : 16990 MB-seconds, 31 vcore-seconds
+	Aggregate Resource Preempted : 0 MB-seconds, 0 vcore-seconds
+	Log Aggregation Status : NOT_START
+	Diagnostics : 
+	Unmanaged Application : false
+	Application Node Label Expression : <Not set>
+	AM container Node Label Expression : <DEFAULT_PARTITION>
+	TimeoutType : LIFETIME	ExpiryTime : UNLIMITED	RemainingTime : -1seconds
+
+JOB_HISTORY_OK job_1791736103627_0002 SUCCEEDED
+LOG_AGGREGATION_OK
+UI_OK https://111.88.130.214:8443/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8444/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8445/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8446/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8451/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8452/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8453/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8461/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8462/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8463/ authenticated=200 anonymous=401 PUT=403
+SSH_UI_OK http://127.0.0.1:18088/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19870/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19868/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19889/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19864/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19865/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19866/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18042/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18043/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18044/ GET=200 PUT=403
+Configured Capacity: 152652324864 (142.17 GB)
+Present Capacity: 135623502353 (126.31 GB)
+DFS Remaining: 135620505600 (126.31 GB)
+DFS Used: 2996753 (2.86 MB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (3):
+
+Name: 10.34.0.11:9866 (team-34-nn)
+Hostname: 10.34.0.11
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 1001499 (978.03 KB)
+Non DFS Used: 5661100005 (5.27 GB)
+DFS Remaining: 45205229568 (42.10 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.84%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sun Oct 11 16:32:10 UTC 2026
+Last Block Report: Sun Oct 11 16:04:37 UTC 2026
+Num of Blocks: 15
+
+
+Name: 10.34.0.12:9866 (team-34-00)
+Hostname: 10.34.0.12
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 997403 (974.03 KB)
+Non DFS Used: 5658863589 (5.27 GB)
+DFS Remaining: 45207470080 (42.10 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.84%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sun Oct 11 16:32:11 UTC 2026
+Last Block Report: Sun Oct 11 16:04:38 UTC 2026
+Num of Blocks: 15
+
+
+Name: 10.34.0.13:9866 (team-34-01)
+Hostname: 10.34.0.13
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 997851 (974.46 KB)
+Non DFS Used: 5658527269 (5.27 GB)
+DFS Remaining: 45207805952 (42.10 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.84%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Sun Oct 11 16:32:09 UTC 2026
+Last Block Report: Sun Oct 11 16:04:39 UTC 2026
+Num of Blocks: 15
+
+
+Connecting to namenode via http://10.34.0.11:9870/fsck?ugi=hadoop&files=1&blocks=1&path=%2F
+VERIFY_OK
+Application: application_1791736103627_0002
+HDFS evidence: /user/yarn/hw2-check-20261011T163126Z-8104

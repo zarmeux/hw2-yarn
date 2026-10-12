@@ -1,0 +1,77 @@
+{
+  "checked_at": "2026-10-12T15:01:37.081760+00:00",
+  "host": "111.88.130.214",
+  "all_ok": false,
+  "checks": [
+    {
+      "port": 8443,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8444,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8445,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8446,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8451,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8452,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8453,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8461,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8462,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    },
+    {
+      "port": 8463,
+      "tcp": "OPEN",
+      "tls": "FAILED",
+      "ok": false,
+      "reason": "_ssl.c:1063: The handshake operation timed out"
+    }
+  ]
+}

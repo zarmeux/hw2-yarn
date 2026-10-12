@@ -1,0 +1,119 @@
+{
+  "checked_at": "2026-10-12T14:56:53.107634+00:00",
+  "checks": [
+    {
+      "port": 18088,
+      "status": 200,
+      "url": "http://127.0.0.1:18088/cluster",
+      "bytes": 15207,
+      "title": "All Applications",
+      "internal_links": []
+    },
+    {
+      "port": 19870,
+      "status": 200,
+      "url": "http://127.0.0.1:19870/index.html",
+      "bytes": 1079,
+      "title": "Hadoop Administration",
+      "internal_links": []
+    },
+    {
+      "port": 19868,
+      "status": 200,
+      "url": "http://127.0.0.1:19868/index.html",
+      "bytes": 1083,
+      "title": "Hadoop Administration",
+      "internal_links": []
+    },
+    {
+      "port": 19889,
+      "status": 200,
+      "url": "http://127.0.0.1:19889/jobhistory",
+      "bytes": 8276,
+      "title": "JobHistory",
+      "internal_links": []
+    },
+    {
+      "port": 19864,
+      "status": 200,
+      "url": "http://127.0.0.1:19864/index.html",
+      "bytes": 1085,
+      "title": "Hadoop Administration",
+      "internal_links": []
+    },
+    {
+      "port": 19865,
+      "status": 200,
+      "url": "http://127.0.0.1:19865/index.html",
+      "bytes": 1085,
+      "title": "Hadoop Administration",
+      "internal_links": []
+    },
+    {
+      "port": 19866,
+      "status": 200,
+      "url": "http://127.0.0.1:19866/index.html",
+      "bytes": 1085,
+      "title": "Hadoop Administration",
+      "internal_links": []
+    },
+    {
+      "port": 18042,
+      "status": 200,
+      "url": "http://127.0.0.1:18042/node",
+      "bytes": 6582,
+      "title": "NodeManager information",
+      "internal_links": []
+    },
+    {
+      "port": 18043,
+      "status": 200,
+      "url": "http://127.0.0.1:18043/node",
+      "bytes": 6582,
+      "title": "NodeManager information",
+      "internal_links": []
+    },
+    {
+      "port": 18044,
+      "status": 200,
+      "url": "http://127.0.0.1:18044/node",
+      "bytes": 6582,
+      "title": "NodeManager information",
+      "internal_links": []
+    }
+  ],
+  "deep_links": [
+    {
+      "port": 18088,
+      "status": 200,
+      "url": "http://127.0.0.1:18088/cluster/nodes",
+      "bytes": 13902,
+      "title": "Nodes of the cluster",
+      "internal_links": []
+    },
+    {
+      "port": 18088,
+      "status": 200,
+      "url": "http://127.0.0.1:19889/jobhistory/job/job_1791736103627_0002",
+      "bytes": 10699,
+      "title": "MapReduce Job job_1791736103627_0002",
+      "internal_links": []
+    },
+    {
+      "port": 19889,
+      "status": 200,
+      "url": "http://127.0.0.1:19889/jobhistory/job/job_1791736103627_0002",
+      "bytes": 10699,
+      "title": "MapReduce Job job_1791736103627_0002",
+      "internal_links": []
+    },
+    {
+      "port": 19870,
+      "status": 200,
+      "url": "http://127.0.0.1:19870/jmx?qry=Hadoop:service=NameNode,name=FSNamesystemState",
+      "bytes": 4330,
+      "title": null,
+      "internal_links": []
+    }
+  ]
+}

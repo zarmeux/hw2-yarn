@@ -1,0 +1,35 @@
+YARN review: 2026-10-11T17:14:27Z
+SERVICE_OK 10.34.0.10 hadoop-resourcemanager active/enabled
+SERVICE_OK 10.34.0.10 hadoop-historyserver active/enabled
+SERVICE_OK 10.34.0.10 nginx active/enabled
+SERVICE_OK 10.34.0.11 hadoop-nodemanager active/enabled
+SERVICE_OK 10.34.0.12 hadoop-nodemanager active/enabled
+SERVICE_OK 10.34.0.13 hadoop-nodemanager active/enabled
+NODES_OK running=3 lost=0 unhealthy=0 memory=5120MiB vcores=5
+JOB_OK job_1791736103627_0002 SUCCEEDED maps=1 reduces=1
+LOG_AGGREGATION_OK application_1791736103627_0002
+SSH_UI_OK port=18088 GET=200
+SSH_UI_OK port=19870 GET=200
+SSH_UI_OK port=19868 GET=200
+SSH_UI_OK port=19889 GET=200
+SSH_UI_OK port=19864 GET=200
+SSH_UI_OK port=19865 GET=200
+SSH_UI_OK port=19866 GET=200
+SSH_UI_OK port=18042 GET=200
+SSH_UI_OK port=18043 GET=200
+SSH_UI_OK port=18044 GET=200
+HTTPS_LOCAL_OK port=8443 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8444 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8445 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8446 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8451 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8452 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8453 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8461 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8462 authorized=200 anonymous=401
+HTTPS_LOCAL_OK port=8463 authorized=200 anonymous=401
+PUBLIC_REACHABILITY_NOT_CHECKED: run check-public.py on an external computer.
+Safe mode is OFF
+Connecting to namenode via http://10.34.0.11:9870/fsck?ugi=hadoop&files=1&blocks=1&path=%2F
+HDFS_OK HEALTHY
+REVIEW_OK

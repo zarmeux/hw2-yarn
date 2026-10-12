@@ -1,0 +1,243 @@
+Prerequisite: HW1 HDFS must already be healthy.
+SETUP_OK 10.34.0.10 containers=2048MB/2vcores
+SETUP_OK 10.34.0.11 containers=1024MB/1vcores
+SETUP_OK 10.34.0.12 containers=2048MB/2vcores
+SETUP_OK 10.34.0.13 containers=2048MB/2vcores
+curl: (7) Failed to connect to 10.34.0.10 port 8088 after 0 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.34.0.10 port 8088 after 0 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.34.0.10 port 8088 after 0 ms: Couldn't connect to server
+curl: (7) Failed to connect to 10.34.0.10 port 8088 after 0 ms: Couldn't connect to server
+curl: (28) Operation timed out after 3002 milliseconds with 0 bytes received
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+Synchronizing state of nginx.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable nginx
+PUBLISH_OK: HTTPS ports 8443-8446,8451-8453,8461-8463; credentials in /etc/nginx/hw2/access.json
+active
+active
+10.34.0.11 active
+10.34.0.12 active
+10.34.0.13 active
+2026-10-12 14:57:33,431 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+Total Nodes:3
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+team-34-00:45454	        RUNNING	  team-34-00:8042	                           0
+team-34-01:45454	        RUNNING	  team-34-01:8042	                           0
+team-34-nn:45454	        RUNNING	  team-34-nn:8042	                           0
+2026-10-12 14:57:44,999 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+2026-10-12 14:57:45,593 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/yarn/staging/yarn/.staging/job_1791817038776_0001
+2026-10-12 14:57:46,057 INFO input.FileInputFormat: Total input files to process : 1
+2026-10-12 14:57:46,136 INFO mapreduce.JobSubmitter: number of splits:1
+2026-10-12 14:57:46,463 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1791817038776_0001
+2026-10-12 14:57:46,464 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-12 14:57:46,727 INFO conf.Configuration: resource-types.xml not found
+2026-10-12 14:57:46,728 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-10-12 14:57:47,121 INFO impl.YarnClientImpl: Submitted application application_1791817038776_0001
+2026-10-12 14:57:47,205 INFO mapreduce.Job: The url to track the job: http://team-34-en:8088/proxy/application_1791817038776_0001/
+2026-10-12 14:57:47,207 INFO mapreduce.Job: Running job: job_1791817038776_0001
+2026-10-12 14:57:57,491 INFO mapreduce.Job: Job job_1791817038776_0001 running in uber mode : false
+2026-10-12 14:57:57,491 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-12 14:58:05,563 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-12 14:58:11,597 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-12 14:58:11,607 INFO mapreduce.Job: Job job_1791817038776_0001 completed successfully
+2026-10-12 14:58:11,712 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=44
+		FILE: Number of bytes written=621659
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=178
+		HDFS: Number of bytes written=26
+		HDFS: Number of read operations=8
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=10494
+		Total time spent by all reduces in occupied slots (ms)=8062
+		Total time spent by all map tasks (ms)=5247
+		Total time spent by all reduce tasks (ms)=4031
+		Total vcore-milliseconds taken by all map tasks=5247
+		Total vcore-milliseconds taken by all reduce tasks=4031
+		Total megabyte-milliseconds taken by all map tasks=2686464
+		Total megabyte-milliseconds taken by all reduce tasks=2063872
+	Map-Reduce Framework
+		Map input records=2
+		Map output records=5
+		Map output bytes=52
+		Map output materialized bytes=44
+		Input split bytes=146
+		Combine input records=5
+		Combine output records=3
+		Reduce input groups=3
+		Reduce shuffle bytes=44
+		Reduce input records=3
+		Reduce output records=3
+		Spilled Records=6
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=104
+		CPU time spent (ms)=2030
+		Physical memory (bytes) snapshot=539688960
+		Virtual memory (bytes) snapshot=4508626944
+		Total committed heap usage (bytes)=350224384
+		Peak Map Physical memory (bytes)=346169344
+		Peak Map Virtual memory (bytes)=2254553088
+		Peak Reduce Physical memory (bytes)=193519616
+		Peak Reduce Virtual memory (bytes)=2256404480
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=32
+	File Output Format Counters 
+		Bytes Written=26
+2026-10-12 14:58:13,442 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /10.34.0.10:8032
+2026-10-12 14:58:13,999 INFO conf.Configuration: resource-types.xml not found
+2026-10-12 14:58:13,999 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+Application Report : 
+	Application-Id : application_1791817038776_0001
+	Application-Name : word count
+	Application-Type : MAPREDUCE
+	User : yarn
+	Queue : root.default
+	Application Priority : 0
+	Start-Time : 1791817066788
+	Finish-Time : 1791817090416
+	Progress : 100%
+	State : FINISHED
+	Final-State : SUCCEEDED
+	Tracking-URL : http://team-34-en:19888/jobhistory/job/job_1791817038776_0001
+	RPC Port : 42627
+	AM Host : team-34-01
+	Aggregate Resource Allocation : 19802 MB-seconds, 38 vcore-seconds
+	Aggregate Resource Preempted : 0 MB-seconds, 0 vcore-seconds
+	Log Aggregation Status : NOT_START
+	Diagnostics : 
+	Unmanaged Application : false
+	Application Node Label Expression : <Not set>
+	AM container Node Label Expression : <DEFAULT_PARTITION>
+	TimeoutType : LIFETIME	ExpiryTime : UNLIMITED	RemainingTime : -1seconds
+
+JOB_HISTORY_OK job_1791817038776_0001 SUCCEEDED
+LOG_AGGREGATION_OK
+DATANODE_LINK_OK 10.34.0.11:9866 -> http://127.0.0.1:19864 HTTP=200
+DATANODE_LINK_OK 10.34.0.12:9866 -> http://127.0.0.1:19865 HTTP=200
+DATANODE_LINK_OK 10.34.0.13:9866 -> http://127.0.0.1:19866 HTTP=200
+LINKS_OK
+UI_OK https://111.88.130.214:8443/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8444/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8445/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8446/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8451/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8452/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8453/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8461/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8462/ authenticated=200 anonymous=401 PUT=403
+UI_OK https://111.88.130.214:8463/ authenticated=200 anonymous=401 PUT=403
+SSH_UI_OK http://127.0.0.1:18088/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19870/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19868/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19889/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19864/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19865/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:19866/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18042/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18043/ GET=200 PUT=403
+SSH_UI_OK http://127.0.0.1:18044/ GET=200 PUT=403
+Configured Capacity: 152652324864 (142.17 GB)
+Present Capacity: 135613458295 (126.30 GB)
+DFS Remaining: 135608758272 (126.30 GB)
+DFS Used: 4700023 (4.48 MB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (3):
+
+Name: 10.34.0.11:9866 (team-34-nn)
+Hostname: 10.34.0.11
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 1557211 (1.49 MB)
+Non DFS Used: 5670202661 (5.28 GB)
+DFS Remaining: 45195571200 (42.09 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.82%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Mon Oct 12 14:58:25 UTC 2026
+Last Block Report: Mon Oct 12 09:48:34 UTC 2026
+Num of Blocks: 21
+
+
+Name: 10.34.0.12:9866 (team-34-00)
+Hostname: 10.34.0.12
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 1589248 (1.52 MB)
+Non DFS Used: 5659123712 (5.27 GB)
+DFS Remaining: 45206618112 (42.10 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.84%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Mon Oct 12 14:58:24 UTC 2026
+Last Block Report: Mon Oct 12 10:00:11 UTC 2026
+Num of Blocks: 21
+
+
+Name: 10.34.0.13:9866 (team-34-01)
+Hostname: 10.34.0.13
+Decommission Status : Normal
+Configured Capacity: 50884108288 (47.39 GB)
+DFS Used: 1553564 (1.48 MB)
+Non DFS Used: 5659208548 (5.27 GB)
+DFS Remaining: 45206568960 (42.10 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 88.84%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Mon Oct 12 14:58:25 UTC 2026
+Last Block Report: Mon Oct 12 13:26:52 UTC 2026
+Num of Blocks: 21
+
+
+Connecting to namenode via http://10.34.0.11:9870/fsck?ugi=hadoop&files=1&blocks=1&path=%2F
+VERIFY_OK
+Application: application_1791817038776_0001
+HDFS evidence: /user/yarn/hw2-check-20261012T145733Z-18353
+DEPLOY_OK
