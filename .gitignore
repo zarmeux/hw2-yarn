@@ -11,3 +11,8 @@ id_*
 *access-private*
 *.netrc
 __pycache__/
+
+# Local deployment output and macOS metadata
+logs-*.txt
+.DS_Store
+._*
