@@ -1,10 +1,12 @@
-# ДЗ №2. YARN и веб-интерфейсы кластера
+# ДЗ №2 — YARN и веб-интерфейсы кластера
 
-На HDFS из первого задания я развернул YARN: ResourceManager, три NodeManager и MapReduce JobHistory. Для веб-интерфейсов основных и вспомогательных служб настроил nginx на edge. Все десять интерфейсов опубликованы для внешнего использования через SSH-туннель к публичному адресу edge. Это основной проверенный способ доступа на выданном стенде. Дополнительные HTTPS-порты настроены, но прямой доступ к ним из внешней сети пока не подтверждён; подробности и команды находятся в [INSTALL.md](INSTALL.md).
+На HDFS из [первого задания](https://github.com/zarmeux/hw1-hdfs) мы развернули YARN: ResourceManager, три NodeManager и MapReduce JobHistory. Для доступа к веб-интерфейсам настроили nginx на edge.
+
+На выданном стенде все десять интерфейсов открываются с внешнего компьютера через SSH-туннель. Прямой HTTPS мы тоже настроили, но из внешней сети он пока не работает. Ниже описали оба способа и результаты проверок.
 
 ## Размещение служб
 
-Использовал тот же стенд team-34: Ubuntu 24.04, OpenJDK 11, Hadoop 3.4.2. nginx — версии 1.24.0.
+Мы использовали тот же стенд team-34: Ubuntu 24.04, OpenJDK 11 и Hadoop 3.4.2. Версия nginx — 1.24.0.
 
 | Машина | IP | Службы YARN и публикации |
 |---|---|---|
@@ -13,41 +15,36 @@
 | team-34-00 | 10.34.0.12 | NodeManager |
 | team-34-01 | 10.34.0.13 | NodeManager |
 
-HDFS продолжает работать в прежней конфигурации. На edge остаётся SecondaryNameNode, на `team-34-nn` — NameNode и DataNode, на двух остальных рабочих машинах — DataNode.
+HDFS продолжает работать: SecondaryNameNode находится на edge, NameNode и один DataNode — на `team-34-nn`, ещё два DataNode — на остальных рабочих машинах.
 
 ## Установка и настройки
 
-YARN установил отдельными скриптами из `/home/team/hw2-yarn`:
+На edge из папки `/home/team/hw2-yarn`:
 
 ```bash
 bash scripts/deploy.sh
 ```
 
-Скрипт использует Hadoop из первого задания, создаёт пользователя `yarn`, конфигурацию `/etc/hadoop-yarn` и службы `hadoop-resourcemanager`, `hadoop-nodemanager`, `hadoop-historyserver`. Все службы включены в автозапуск. Настройки HDFS в `/etc/hadoop` сохраняются, NameNode не форматируется.
+Скрипт использует установленный в ДЗ №1 Hadoop, создаёт пользователя `yarn`, конфигурацию `/etc/hadoop-yarn` и systemd-службы. Затем готовит каталоги HDFS, запускает YARN и JobHistory, настраивает nginx и проверяет работу через WordCount. При успешном завершении выводит `VERIFY_OK` и `DEPLOY_OK`.
 
-В `yarn-site.xml` задал адрес ResourceManager, ресурсы NodeManager, shuffle-сервис для MapReduce и агрегирование логов в HDFS. В `mapred-site.xml` указал запуск MapReduce через YARN и адрес JobHistory. Для staging используется `/user/yarn/staging`, для логов — `/yarn-logs`, для истории — `/mr-history/tmp` и `/mr-history/done`.
+В `yarn-site.xml` мы задали адреса служб, ресурсы NodeManager, shuffle-сервис и агрегирование логов. В `mapred-site.xml` указали запуск MapReduce через YARN и адрес JobHistory. Конфигурацию HDFS в `/etc/hadoop` не меняем, NameNode не форматируем.
 
-На машине с NameNode выделил контейнерам 1024 MiB и 1 vcore, на двух других — по 2048 MiB и 2 vcore. Итого YARN располагает 5120 MiB и 5 vcore. Это оставляет память для HDFS и системных служб. Map, Reduce и ApplicationMaster используют по 512 MiB с heap 384 MiB. Проверка физической памяти включена; проверку виртуальной памяти отключил из-за резервирования адресного пространства JVM.
+На машине с NameNode мы выделили контейнерам 1024 MiB и 1 vcore, на двух других — по 2048 MiB и 2 vcore. Всего получилось 5120 MiB и 5 vcore. Map, Reduce и ApplicationMaster используют по 512 MiB с heap 384 MiB. Проверка физической памяти включена; проверку виртуальной памяти мы отключили из-за резервирования адресного пространства JVM.
 
-Web Application Proxy работает внутри ResourceManager по пути `/proxy/`. Отдельный Timeline Server в этой работе не разворачивал. Параметры стенда вынес в [cluster.env](cluster.env), подробную последовательность установки — в [INSTALL.md](INSTALL.md).
+Web Application Proxy работает внутри ResourceManager по пути `/proxy/`. Отдельный Timeline Server мы не разворачивали.
 
-## Проверка YARN на WordCount
+Параметры стенда находятся в [cluster.env](cluster.env), подробная инструкция — в [INSTALL.md](INSTALL.md). Повторный deploy перезапускает YARN, поэтому его нужно выполнять без активных заданий.
 
-После установки дважды запустил пример WordCount через `scripts/verify.sh`. Входные данные:
+## Проверка WordCount
+
+Для проверки мы использовали такой входной файл:
 
 ```text
 hadoop yarn hadoop
 yarn cluster
 ```
 
-Оба запуска выполнялись через YARN, получили идентификаторы приложений и завершились со статусами `FINISHED / SUCCEEDED`:
-
-```text
-application_1791736103627_0001
-application_1791736103627_0002
-```
-
-Во втором запуске результат записан в `/user/yarn/hw2-check-20261011T163126Z-8104/output`. Содержимое выходного файла совпало с ожидаемым:
+Ожидаемый результат:
 
 ```text
 cluster  1
@@ -55,24 +52,31 @@ hadoop   2
 yarn     2
 ```
 
-JobHistory сохранил сведения о задании: один map и один reduce завершились успешно, неуспешных и убитых попыток нет. Агрегирование логов завершилось со статусом `SUCCEEDED`; логи были получены командой `yarn logs`.
+Два запуска 11.10.2026 завершились со статусами `FINISHED / SUCCEEDED`:
 
-![Завершённое задание WordCount в JobHistory](evidence/job-history.png)
+```text
+application_1791736103627_0001
+application_1791736103627_0002
+```
 
-ResourceManager видит три NodeManager в состоянии RUNNING, lost и unhealthy узлов нет.
+12.10.2026 мы повторно развернули кластер и запустили ещё один WordCount — `application_1791817038776_0001`. Он тоже завершился успешно, результат совпал с ожидаемым. JobHistory сохранил историю задания, а агрегированные логи удалось прочитать через `yarn logs`.
+
+![Задание WordCount в JobHistory](evidence/job-history.png)
+
+ResourceManager видит три NodeManager в состоянии `RUNNING`, lost и unhealthy узлов нет. После повторной установки HDFS остался целым: три DataNode работают, полный `fsck` возвращает `HEALTHY`.
 
 ![Три работающих NodeManager](evidence/yarn-nodes.png)
 
-Вывод запуска сохранён в [verification.txt](evidence/verification.txt), результат подсчёта — в [wordcount-result.txt](evidence/wordcount-result.txt). Состояние приложений и история задания — в [yarn-applications.json](evidence/yarn-applications.json) и [job-history.json](evidence/job-history.json). Повторная проверка 11.10.2026 в 20:14 МСК также завершилась успешно: [review.txt](evidence/review.txt).
+Свежие результаты: [повторное развёртывание](evidence/redeploy-20261012.txt), [WordCount](evidence/wordcount-result-20261012.txt), [JobHistory](evidence/job-history-20261012.json) и [проверка HDFS](evidence/hdfs-fsck-20261012.txt).
 
-## Публикация веб-интерфейсов
+## Доступ к веб-интерфейсам
 
-На edge настроил reverse proxy nginx для десяти интерфейсов. Для прямого HTTPS использовал самоподписанный сертификат с внешним IP в SAN, TLS 1.2/1.3 и Basic Auth. Пароль и приватный ключ сертификата хранятся отдельно от файлов задания.
+Для каждого интерфейса мы настроили отдельный HTTPS-порт и отдельный локальный порт для SSH-туннеля.
 
 | Интерфейс | HTTPS-порт на 111.88.130.214 | Адрес через SSH-туннель |
 |---|---|---|
 | ResourceManager | 8443 | http://127.0.0.1:18088/cluster/nodes |
-| NameNode | 8444 | http://127.0.0.1:19870/ |
+| NameNode | 8444 | http://127.0.0.1:19870/dfshealth.html#tab-datanode |
 | SecondaryNameNode | 8445 | http://127.0.0.1:19868/ |
 | JobHistory | 8446 | http://127.0.0.1:19889/jobhistory |
 | DataNode nn | 8451 | http://127.0.0.1:19864/ |
@@ -82,28 +86,46 @@ ResourceManager видит три NodeManager в состоянии RUNNING, los
 | NodeManager 00 | 8462 | http://127.0.0.1:18043/ |
 | NodeManager 01 | 8463 | http://127.0.0.1:18044/ |
 
-В nginx разрешил только GET/HEAD, чтобы через опубликованные интерфейсы нельзя было отправлять команды изменения состояния. Внутренние адреса в ссылках и перенаправлениях переписываются на соответствующие адреса прокси.
+Для подключения с Linux/macOS сначала проверьте обычный SSH-вход, затем из папки репозитория запустите туннель:
 
-При проверке HTTPS со стороны edge все десять интерфейсов вернули 200 с авторизацией, 401 без пароля и 403 для PUT. Однако 12.10.2026 TCP-соединения с внешнего компьютера устанавливаются, а TLS-handshake завершается тайм-аутом. Открытый TCP-порт сам по себе не доказывает доступность HTTPS: [direct-public-check-20261012.json](evidence/direct-public-check-20261012.json). nginx слушает порты, UFW не активен; предполагаю, что соединения блокируются облачными сетевыми правилами. Открыть их в рамках работы не удалось, поэтому прямую публикацию HTTPS считаю незавершённой.
+```bash
+ssh team@111.88.130.214
+# После входа выйдите с ВМ командой exit.
+bash scripts/connect-ui.sh
+```
 
-Для доступа с внешнего компьютера настроил второй набор nginx-портов, привязанных к loopback edge, и SSH-туннель через доступный порт 22. Через него открываются все десять интерфейсов. Переход ResourceManager → JobHistory и ссылки NameNode → все три DataNode проверены после исправления 12.10.2026. Результат проверки с внешнего компьютера — HTTP 200 на каждом адресе: [ssh-tunnel-check.txt](evidence/ssh-tunnel-check.txt). Скрипты туннеля для Windows и Linux/macOS находятся в [scripts/](scripts/); способ подключения описан в [INSTALL.md](INSTALL.md).
+Оставьте терминал с туннелем открытым и перейдите по адресам из таблицы. Если нужен конкретный SSH-ключ, передайте его путь первым аргументом. Для Windows есть `scripts/connect-ui.ps1`; команды приведены в [INSTALL.md](INSTALL.md).
 
-После установки и повторного развёртывания YARN HDFS остался целым: три DataNode работают, `fsck` показывает `HEALTHY`. Пароль nginx и сертификат при повторной установке сохранились.
+Мы проверили доступ с внешнего компьютера: все десять интерфейсов вернули HTTP 200, переход ResourceManager → JobHistory работает. Результат сохранён в [ssh-tunnel-check-20261012.json](evidence/ssh-tunnel-check-20261012.json).
 
-[Условие задания на сайте курса](https://go.teachbase.ru/education/listener/course_player/sessions/1415858/tasks/412112).
+### Исправление ссылок на DataNode
 
-## Проверка исправленной версии 12.10.2026
+В интерфейсе NameNode ссылки на DataNode сначала вели на внутренние IP. Обычной замены адресов в nginx оказалось недостаточно: NameNode собирает эти ссылки в JavaScript из имени узла.
 
-Полное повторное развёртывание завершилось `DEPLOY_OK`. Новый WordCount: `application_1791817038776_0001`, результат совпал с ожидаемым. `review.sh` завершился `REVIEW_OK`, HDFS — `HEALTHY`.
+Мы добавили в `publish.py` отдельную версию `dfshealth.js` для каждого способа доступа. Файлы установленного Hadoop при этом не меняются. Теперь через туннель ссылки ведут на `127.0.0.1:19864–19866`, а для HTTPS — на внешний адрес и порты `8451–8453`.
 
-Ссылки на DataNode исправлены в публикуемом JavaScript NameNode. Файлы самой установки Hadoop не изменяются: nginx отдаёт отдельную версию `dfshealth.js` для SSH и HTTPS. При несовместимой версии интерфейса публикация останавливается с понятной ошибкой. Проверка `check-links.py` сопоставляет ссылки с живыми DataNode и открывает каждый интерфейс.
+Проверку ссылок включили в `verify.sh` и `review.sh`. Её также можно запустить отдельно при открытом туннеле:
 
-- [Повторное развёртывание](evidence/redeploy-20261012.txt).
-- [Проверка служб и ссылок](evidence/review-20261012.txt).
-- [Внешняя проверка через SSH](evidence/ssh-tunnel-check-20261012.json).
-- [Ссылки, реально сформированные браузером](evidence/namenode-links-fixed.json).
-- [Итоговый отчёт](evidence/REPORT-final.md).
+```bash
+python3 scripts/check-links.py
+```
 
-![Исправленные ссылки NameNode на три DataNode](evidence/namenode-links-fixed.jpg)
+Ожидаемый результат — три `DATANODE_LINK_OK` и `LINKS_OK`. Ссылки мы дополнительно проверили в браузере: [результат](evidence/namenode-links-fixed.json).
 
-Материалы ДЗ №1: [zarmeux/hw1-hdfs](https://github.com/zarmeux/hw1-hdfs). Этот репозиторий: [zarmeux/hw2-yarn](https://github.com/zarmeux/hw2-yarn).
+![Исправленные ссылки NameNode на DataNode](evidence/namenode-links-fixed.jpg)
+
+### Что пока не работает в прямом HTTPS
+
+Для HTTPS мы настроили TLS 1.2/1.3, самоподписанный сертификат и Basic Auth. В nginx разрешены только GET/HEAD. Пароль и приватные ключи в репозиторий не входят.
+
+При проверке внутри стенда все десять интерфейсов возвращают 200 с авторизацией, 401 без пароля и 403 для PUT. Однако с внешнего компьютера TCP-соединение устанавливается, а TLS-handshake завершается тайм-аутом: [внешняя проверка](evidence/direct-public-check-20261012.json).
+
+Причину внешнего ограничения мы окончательно не установили. Доступ к панели управления сетью ВМ нам не выдали, поэтому для проверки сетевых правил понадобится помощь администратора стенда. Пока используем рабочий SSH-туннель и не считаем прямой HTTPS проверенным способом доступа.
+
+## Файлы работы
+
+- [INSTALL.md](INSTALL.md) — установка, управление и подключение к интерфейсам.
+- [scripts/](scripts/) — автоматизация и проверки.
+- [evidence/REPORT-final.md](evidence/REPORT-final.md) — итоговая проверка 12.10.2026.
+- [evidence/review-20261012.txt](evidence/review-20261012.txt) — состояние служб, интерфейсов и ссылок, `REVIEW_OK`.
+- [Условие задания](https://go.teachbase.ru/education/listener/course_player/sessions/1415858/tasks/412112).
